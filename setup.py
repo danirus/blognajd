@@ -20,7 +20,7 @@ setup(
     keywords = "django apps",
     license = "MIT",
     description = "Django blogging app for Python 3, Oh!",
-    long_description = "Is it really the first django blogging app for Python 3? Who cares... It is just a simple django blogging app. It uses a customizable/downloadable theme from Twitter-bootstrap. It is fully tested under django 1.5.1 and python 3.2."
+    long_description = "Is it really the first django blogging app for Python 3? Who cares... It is just a simple django blogging app. It uses a customizable/downloadable theme from Twitter-bootstrap. It is fully tested under django 1.5.1 and python 3.2.",
     author = "Daniel Rus Morales",
     author_email = "inbox@danir.us",
     maintainer = "Daniel Rus Morales",
