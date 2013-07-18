@@ -1,4 +1,3 @@
-from django import VERSION as DJANGO_VERSION
 from django.conf.urls import include, patterns, url
 
 from django.conf import settings
