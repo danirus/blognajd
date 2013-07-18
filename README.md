@@ -1,5 +1,7 @@
 # blognajd
 
+[![Build Status](https://travis-ci.org/danirus/blognajd.png)](https://travis-ci.org/danirus/blognajd)
+
 Probably the first django blogging app for Python 3. And a twitter-bootstrap customizable theme.
 
 By Daniel Rus Morales <http://danir.us/>
@@ -16,7 +18,7 @@ Tested under:
 
 Steps to install the app and run the demo site:
 
-    $ virtualenv virtualenv -p python3 ~/venv/test-blognadj
+    $ virtualenv -p python3 ~/venv/test-blognadj
     $ source venv/test-blognadj/bin/activate
     $ cd ~/venv/test-blognadj
     $ git clone git://github.com/danirus/blognajd.git
