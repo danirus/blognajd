@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/danirus/blognajd.png)](https://travis-ci.org/danirus/blognajd)
 
-Probably the first django blogging app for Python 3. And a twitter-bootstrap customizable theme.
+Probably the first django blogging app for Python 3.
 
 By Daniel Rus Morales <http://danir.us/>
 
@@ -40,7 +40,7 @@ Run the tests with:  ``python setup.py test``
 
 ## Theme
 
-The theme is based on Twitter-bootstrap 2.3.2. Customize all the components (colors, fonts, layouts, buttons, navbars, forms, etc) in the [Twitter-bootstrap website](http://twitter.github.io/bootstrap/customize.html). Download the bundle and replace the old `bootstrap.min.css` and `bootstrap.min.js` with your own version in your static directory for blognajd: `static/blognajd/css/` and `static/blognajd/js/`.
+Theme based on Twitter-bootstrap 2.3.2. Customize all the components (colors, fonts, layouts, buttons, navbars, forms, etc) in the [Twitter-bootstrap website](http://twitter.github.io/bootstrap/customize.html). Download the bundle and replace the old `bootstrap.min.css` and `bootstrap.min.js` with your own version in your static directory for blognajd: `static/blognajd/css/` and `static/blognajd/js/`.
 
 
 ## Settings
