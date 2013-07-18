@@ -1,2 +1,2 @@
--r requirements
+-r requirements.pip
 mock
