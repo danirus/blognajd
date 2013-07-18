@@ -3,7 +3,8 @@ python:
   - 3.2
 # command to install dependencies
 install: 
-  - sudo apt-get install python3-lxml
+  - sudo apt-get install libxml2-dev libxslt1-dev
+  - pip install lxml --use-mirrors
   - pip install -r requirements_tests.pip
 # command to run tests
 script: python setup.py test
