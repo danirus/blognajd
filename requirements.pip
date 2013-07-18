@@ -1,0 +1,12 @@
+Django
+Pillow
+beautifulsoup4
+Markdown
+docutils
+-e git+git://github.com/danirus/tagging.git#egg=django-tagging
+-e git+git://github.com/danirus/django-markup.git#egg=django-markup
+-e git+git://github.com/danirus/django-contactme.git#egg=django-contactme
+-e git+git://github.com/danirus/django-comments-xtd.git#egg=django-comments-xtd
+-e git+git://github.com/danirus/sorl-thumbnail.git#egg=sorl-thumbnail
+-e git+git://github.com/danirus/django-inline-media.git#egg=django-inline-media
+-e git+git://github.com/danirus/django-flatblocks-xtd.git#egg=django-flatblocks-xtd

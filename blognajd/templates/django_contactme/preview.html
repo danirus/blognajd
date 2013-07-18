@@ -1,0 +1,15 @@
+{% extends "django_contactme/base.html" %}
+{% load contactme %}
+
+{% block contactme %}
+{% if not form.errors %}
+<h5>Your message preview:</h5>
+<div class="well">
+  {{ message|linebreaks }}
+</div>
+{% endif %}
+
+<div class="contact-form">
+  {% include "django_contactme/form.html" %}
+</div>
+{% endblock %}

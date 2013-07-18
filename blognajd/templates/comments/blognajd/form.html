@@ -1,0 +1,34 @@
+{% load comments %}
+<form id="CF" class="std" action="{% comment_form_target %}" method="post">{% csrf_token %}
+  <input type="hidden" name="next" value="{% url 'comments-xtd-sent' %}" />
+  {% if form.errors %}
+  <div class="alert alert-error"><strong>
+    {% if form.errors|length == 1 %}
+    Please correct the error below{% else %}
+    Please correct the errors below{% endif %}
+  </strong></div>
+  {% endif %}
+  
+  {% for field in form %}
+  {% if field.is_hidden %}
+  <div style="display:none">{{ field }}</div>
+  {% else %}
+  <div {% if field.errors %} class="error"{% endif %}
+       {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+    {% ifequal field.name "comment" %}
+    {{ field }}
+    <span class="help_text">Start with <code>#!markdown</code>, <code>#!restructuredtext</code> or <code>#!linebreaks</code> to use special formatting</span>
+    {% else %}{% ifequal field.name "followup" %}
+    {{ field }} <label class="autowidth" for="id_{{ field.name }}">{{ field.label }}</label>
+    {% else %}
+    {{ field.label_tag }} {{ field }} <span class="help_text">{{ field.help_text }}</span>
+    {% endifequal %}{% endifequal %}
+  </div>
+  {% if field.errors %}{{ field.errors }}{% endif %}
+  {% endif %}
+  {% endfor %}
+  <p class="buttons">
+    <input type="submit" id="id_post" name="post" class="btn btn-primary" value="post" />
+    <input type="submit" id="id_preview" name="preview" class="btn" value="preview" />
+  </p>
+</form>

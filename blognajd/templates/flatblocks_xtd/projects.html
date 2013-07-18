@@ -1,0 +1,9 @@
+{% load inlines %}
+<div id="{{ flatblock.slug }}" class="row-fluid">
+  <h5 class="">{{ flatblock.header|safe }}</h5>
+</div>
+<div class="row-fluid">
+  <div class="offset1 span11">
+    {{ flatblock.content|render_inlines|safe }}
+  </div>
+</div>

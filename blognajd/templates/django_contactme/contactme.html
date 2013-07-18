@@ -1,0 +1,8 @@
+{% extends "django_contactme/base.html" %}
+{% load contactme %}
+
+{% block contactme %}
+<div class="contact-form">
+  {% render_contact_form %}
+</div>
+{% endblock %}

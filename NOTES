@@ -1,0 +1,18 @@
+Bugs in Django 1.5.1:
+
+1. There's a bug (seems not reported yet) in django 1.5.1, file:
+django/contrib/admin/templatetags/admin_list.py line 227.
+That line gets rid of the first character resulting in an error
+under python 3.2 that doesn't show up under python 2.7.
+
+ A temporary fix consist of checking whether the string startswith
+ the char 'u' and removing it if so. It fixes the bug for both,
+ python 2.7 and 3.2.
+
+
+2. Python 3 finds a TypeErro when running at django/core/paginator.py:45.
+self.object_list is of class dict_keys (not builtins.dict_keys) and is
+not subscriptable.
+
+ A temporary fix consist of including the line in a try-except block so that
+ if it fails it slice over a comprehension list.

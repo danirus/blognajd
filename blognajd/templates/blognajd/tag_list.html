@@ -1,0 +1,25 @@
+{% extends "blognajd/base.html" %}
+{% load tagging_tags %}
+
+{% block title %}{{ block.super }}&nbsp;&raquo;&nbsp;tags{% endblock %}
+
+{% block nav-sitename %}<a href="{% url 'index' %}">{{ settings.BLOGNAJD_SITE_SHORT_NAME }}</a>{% endblock %}
+
+{% block class-nav-blog %}active{% endblock %}
+
+{% block jumbotron %}
+<div class="jumbotron">
+  <h3>Tags</h3>
+</div>
+{% endblock %}
+
+{% block body %}
+<div id="body-blog-tags" class="row-fluid">
+  <div class="offset3 span6">
+    {% tag_cloud_for_models blognajd.Story as tags with steps=9 distribution=linear %}
+    <div class="text-center tagcloud">
+      {% for tag in tags %}<a href="{% url 'tag-detail' tag %}" class="tag label">{{ tag.name }}</a>{% endfor %}
+    </div>    
+  </div>
+</div>
+{% endblock %}

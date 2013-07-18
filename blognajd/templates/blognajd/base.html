@@ -1,0 +1,72 @@
+{% load flatblock_xtd_tags %}
+{% load url from future %}
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}{{ settings.BLOGNAJD_SITE_SHORT_NAME }}{% endblock %}</title>
+    {% if settings.DEBUG %}<meta http-equiv="pragma" content="no-cache"/>{% endif %}
+    <meta name="robots" content="index,follow">
+    <meta name="author" content="{{ settings.BLOGNAJD_META_AUTHOR }}">
+    <meta name="keywords" content="{{ settings.BLOGNAJD_META_KEYWORDS }}">
+    <meta name="description" content="{% block meta-description %}{{ settings.BLOGNAJD_META_DESCRIPTION }}{% endblock %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block extrahead %}{% endblock %}
+    <link href="{{ STATIC_URL }}blognajd/css/bootstrap.min.css" rel="Stylesheet">
+    <link href="{{ STATIC_URL }}blognajd/css/theme.css" rel="Stylesheet">
+    {% block extracss %}{% endblock %}
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}blognajd/js/bootstrap.min.js"></script>
+    {% block extrajs %}{% endblock %}
+  </head>
+  <body>
+    <div class="container-narrow">
+      <div id="header">
+	<ul class="nav nav-pills pull-right">
+	  {% if settings.BLOGNAJD_HAS_ABOUT %}{% block nav-about %}<li><a href="{% url 'about' %}">about</a></li>{% endblock %}{% endif %}
+	  {% if user.is_authenticated %}
+	  <li class="dropdown">
+	    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+	      {{ request.user.username }}&nbsp;<b class="caret"></b></a>
+	    <ul class="dropdown-menu">
+	      {% if request.session.unpublished_on %}
+	      <li><a href="{% url 'unpublished-off' %}?next={{ request.path }}">Hide unpublished</a></li>
+	      {% else %}
+	      <li><a href="{% url 'unpublished-on' %}?next={{ request.path }}">Show unpublished</a></li>
+	      {% endif %}
+	    </ul>
+	  </li>
+	  {% endif %}
+	  <li class="dropdown {% block class-nav-blog %}{% endblock %}">
+	    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+	      blog <b class="caret"></b>
+	    </a>
+	    <ul class="dropdown-menu">
+	      <li><a href="{% url 'blog' %}">home</a></li>
+	      <li><a href="{% url 'archive' %}">archive</a></li>
+	      <li><a href="{% url 'tags' %}">tags</a></li>
+	    </ul>
+	  </li>
+	  {% if settings.BLOGNAJD_HAS_PROJECTS %}{% block nav-projects %}<li><a href="{% url 'projects' %}">projects</a></li>{% endblock %}{% endif %}
+	  {% if settings.BLOGNAJD_HAS_CONTACT %}{% block nav-contact %}<li><a href="{% url 'contactme-get-contact-form' %}">contact</a></li>{% endblock %}{% endif %}
+	</ul>
+	<h3 class="muted">{% block nav-sitename %}{{ settings.BLOGNAJD_SITE_SHORT_NAME }}{% endblock %}</h3>
+      </div><!-- header -->
+      <hr>
+
+      {% block jumbotron %}
+      {% endblock %}
+
+      {% block body %}
+      {% endblock %}
+
+      <hr>
+      <div id="footer">
+	<p>{% flatblock_xtd 'footer-copyright' %}</p>
+	<p>{% flatblock_xtd 'footer-license' %}</p>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{% load i18n %}
+{% load url from future %}
+
+<H6>
+  <span class="heydings-common-icon">R</span>&nbsp;{% trans "Subscribe" %}
+</H6>
+<UL>
+  <li><a href="{% url 'latest-stories-feed' %}">Stories feed</a></li>
+  <li><a href="{% url 'comments-feed' %}">Comments feed</a></li>
+</UL>	      

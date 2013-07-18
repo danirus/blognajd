@@ -1,0 +1,44 @@
+{% extends "blognajd/base.html" %}
+{% load comments comments_xtd tagging_tags inlines %}
+
+{% block meta-description %}
+{{ form.target_object.abstract_markup|render_inlines|striptags }}
+{% endblock %}
+
+{% block title %}{{ block.super }}&nbsp;&raquo;&nbsp;comment preview{% endblock %}
+
+{% block nav-sitename %}<a href="{% url 'index' %}">{{ settings.BLOGNAJD_SITE_SHORT_NAME }}</a>{% endblock %}
+
+{% block class-nav-blog %}active{% endblock %}
+
+{% block jumbotron %}
+{% tags_for_object form.target_object as tag_list %}
+{% get_comment_count for form.target_object as comment_count %}
+<div class="jumbotron story">
+  <h3>comment preview</h3>
+  <h3><a href="{{ form.target_object.get_absolute_url }}">{{ form.target_object.title }}</a></h3>
+</div>
+{% endblock %}
+
+{% block body %}
+<div id="comments">
+  <div class="row-fluid">
+    <div class="offset1 span10">
+      {% if form.errors %}
+      <h5>Want to comment?</h5>
+      {% else %}
+      <h5>Preview:</h5>
+      <div class="well">
+	{{ comment|render_markup_comment }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <div class="span12">
+      {% include "comments/blognajd/form.html" %}
+    </div>
+  </div>
+</div>
+{% endblock %}

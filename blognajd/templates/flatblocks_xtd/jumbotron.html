@@ -1,0 +1,7 @@
+{% load inlines %}
+<div id="{{ flatblock.slug }}" class="jumbotron">
+  {{ flatblock.header|safe }}
+  <p class="lead">
+    {{ flatblock.content|render_inlines|safe }}
+  </p>
+</div>

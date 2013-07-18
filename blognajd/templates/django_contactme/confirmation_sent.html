@@ -1,0 +1,14 @@
+{% extends "django_contactme/base.html" %}
+{% load contactme %}
+
+{% block contactme %}
+<hr>
+<div class="alert alert-success">
+  <strong>Please, check your email</strong>
+</div>
+<div class="row-fluid">
+  <div class="offset2 span8">
+    <p>I've sent you a confirmation by email to make sure you're not an evil robot. Please click on the link in the message to verify your email address.</p>
+  </div>
+</div>
+{% endblock %}

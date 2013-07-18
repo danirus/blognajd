@@ -1,0 +1,13 @@
+*.pyc
+*~
+*.*~
+*.zip
+*.egg-info
+*.db
+htmlcov/
+build/
+dist/
+example/demo*/media/cache/
+example/demo*/server-static/
+example/demo*/static/
+.emacs.desktop*

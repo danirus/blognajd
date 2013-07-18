@@ -1,0 +1,49 @@
+{% extends "blognajd/base.html" %}
+{% load tagging_tags %}
+
+{% block extrahead %}
+<link rel="alternate" type="application/rss+xml" title="Stories tagged as {{ object.name }}" href="{{ baseurl }}{% url 'tag-detail-feed' object.name  %}">
+{% endblock %}
+
+{% block title %}{{ block.super }}&nbsp;&raquo;&nbsp;tag {{ object.name }}{% endblock %}
+
+{% block nav-sitename %}<a href="{% url 'index' %}">{{ settings.BLOGNAJD_SITE_SHORT_NAME }}</a>{% endblock %}
+
+{% block class-nav-blog %}active{% endblock %}
+
+{% block jumbotron %}
+<div class="jumbotron">
+  <h3>Tag: {{ object.name }}</h3>
+</div>
+{% endblock %}
+
+{% block body %}
+<div id="body-index" class="row-fluid">
+  <div id="story-list-index" class="span11">
+    {% if object_list %}
+    {% for item in object_list %}
+    {% include "blognajd/includes/story_index.html" with object=item.object %}
+    {% endfor %}
+    {% else %}
+    <h5>No story yet.</h5>
+    {% endif %}
+  </div>
+</div>
+
+{% if is_paginated %}
+<div class="pagination pagination-centered">
+  <ul>
+    {% if page_obj.has_previous %}
+    <li><a href="?page={{ page_obj.previous_page_number }}">Prev</a></li>
+    {% else %}
+    <li class="disabled"><a href="#">Prev</a></li>
+    {% endif %}
+    {% if page_obj.has_next %}
+    <li><a href="?page={{ page_obj.next_page_number }}">Next</a></li>
+    {% else %}
+    <li class="disabled"><a href="#">Next</a></li>
+    {% endif %}
+  </ul>
+</div>
+{% endif %}
+{% endblock %}
