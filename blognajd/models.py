@@ -1,4 +1,5 @@
 #-*- coding: utf-8 -*-
+from datetime import date
 import os.path
 
 from django.db import models
@@ -11,7 +12,7 @@ from django.contrib.sitemaps import ping_google
 from django.core.cache import cache
 from django.utils.safestring import mark_safe
 from django.utils.text import truncate_words
-from django.utils.timezone import now
+# from django.utils.timezone import now
 
 from django_markup.fields import MarkupField
 from django_markup.markup import formatter
@@ -35,15 +36,15 @@ class StoryManager(models.Manager):
 
     def upcoming(self):
         return self.get_query_set().filter(
-            status=PUBLIC, pub_date__gt=now()).order_by("-pub_date")
+            status=PUBLIC, pub_date__gt=date.today()).order_by("-pub_date")
 
     def published(self):
         return self.get_query_set().filter(
-            status=PUBLIC, pub_date__lte=now()).order_by("-pub_date")
+            status=PUBLIC, pub_date__lte=date.today()).order_by("-pub_date")
 
     def select(self, status=[PUBLIC]):
         return self.get_query_set().filter(
-            status__in=status, pub_date__lte=now()).order_by("-pub_date")
+            status__in=status, pub_date__lte=date.today()).order_by("-pub_date")
 
 
 class Story(models.Model):
@@ -58,8 +59,8 @@ class Story(models.Model):
     tags            = TagField()
     status          = models.IntegerField(choices=STATUS_CHOICES, default=1)
     allow_comments  = models.BooleanField(default=True)
-    pub_date        = models.DateTimeField("Publication date", default=now)
-    mod_date        = models.DateTimeField("Modification date", auto_now=True)
+    pub_date        = models.DateField("Publication date", default=date.today())
+    mod_date        = models.DateField("Modification date", auto_now=True)
     visits          = models.IntegerField(default=0, editable=False)
     objects         = StoryManager()
 
@@ -99,14 +100,14 @@ class Story(models.Model):
 
         if self.status == DRAFT:
             return ("blog-story-detail-draft", None, kwargs)
-        elif self.pub_date > now():
+        elif self.pub_date > date.today():
             return ("blog-story-detail-upcoming", None, kwargs)
         else:
             return ("blog-story-detail", None, kwargs)
 
     @property
     def in_the_future(self):
-        return self.pub_date > now()
+        return self.pub_date > date.today()
 
 
 def delete_story_tags(sender, instance, **kwargs):

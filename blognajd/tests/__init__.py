@@ -1,6 +1,8 @@
 #-*- coding: utf-8 -*-
 
 import os
+import shutil
+import six
 import sys
 import unittest
 
@@ -21,6 +23,15 @@ def run_tests():
     test_suite = TestRunner(verbosity=2, interactive=True, failfast=False)
     test_suite.run_tests(["blognajd"])
 
+
+def delete_tmp_dirs():
+    from django.conf import settings
+    try:
+        shutil.rmtree(os.path.join(settings.MEDIA_ROOT, 'pictures'))
+        shutil.rmtree(os.path.join(settings.MEDIA_ROOT, 'cache'))
+    except OSError as exc:
+        if exc.errno != 2:
+            six.reraise(e)
 
 def suite():
     if not os.environ.get("DJANGO_SETTINGS_MODULE", False):

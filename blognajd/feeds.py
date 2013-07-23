@@ -1,3 +1,5 @@
+import datetime
+
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.syndication.views import Feed, FeedDoesNotExist
 from django.contrib.contenttypes.models import ContentType
@@ -17,7 +19,9 @@ from blognajd.models import Story
 class LatestStoriesFeed(Feed):
     
     def item_pubdate(self, item):
-        return item.pub_date
+        return datetime.datetime(item.pub_date.year,
+                                 item.pub_date.month,
+                                 item.pub_date.day, 0, 0, 0)
 
     def item_title(self, item):
         return item.title
@@ -81,7 +85,9 @@ class StoriesByTag(Feed):
             content_type__in=[ct_story,]).order_by("-id")[:10]
 
     def item_pubdate(self, item):
-        return item.object.pub_date
+        return datetime.datetime(item.object.pub_date.year,
+                                 item.object.pub_date.month,
+                                 item.object.pub_date.day, 0, 0, 0)
 
     def item_title(self, item):
         return item.object.title

@@ -27,7 +27,7 @@ class StoryManagerTestCase(DjangoTestCase):
 
     @patch('blognajd.models.ping_google')
     def test_storymanager_upcoming(self, fake_ping):
-        tomorrow = datetime.datetime.now() + datetime.timedelta(days=1)
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
         self.story.pub_date = tomorrow
         self.story.save()
         upcoming = Story.objects.upcoming()
@@ -103,7 +103,7 @@ class StoryModelTestCase(DjangoTestCase):
                          reverse('blog-story-detail-draft', 
                                  kwargs=STORY_URL_KWARGS))
         # upcoming
-        tomorrow = datetime.datetime.now() + datetime.timedelta(days=1)
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
         self.story.pub_date = tomorrow
         self.story.status = PUBLIC
         self.story.save()
@@ -117,7 +117,7 @@ class StoryModelTestCase(DjangoTestCase):
 
     def test_story_in_future(self):
         self.assertFalse(self.story.in_the_future)
-        tomorrow = datetime.datetime.now() + datetime.timedelta(days=1)
+        tomorrow = datetime.date.today() + datetime.timedelta(days=1)
         self.story.pub_date = tomorrow
         self.story.save()
         self.assertTrue(self.story.in_the_future)

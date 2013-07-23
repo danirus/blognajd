@@ -4,8 +4,9 @@ from setuptools import setup, find_packages
 from setuptools.command.test import test
 
 def run_tests(*args):
-    from blognajd.tests import run_tests
+    from blognajd.tests import run_tests, delete_tmp_dirs
     errors = run_tests()
+    delete_tmp_dirs()
     if errors:
         sys.exit(1)
     else:

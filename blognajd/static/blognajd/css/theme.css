@@ -129,6 +129,7 @@ BLOCKQUOTE P {
 #body-story H4 { font-size: 24.75px }
 #body-story H5 { font-size: 21.75px }
 #body-story H6 { font-size: 18.75px }
+#body-story CODE { font-size: 1.1em }
 
 #body-projects .dl-horizontal DT { width: 180px }
 #body-projects .dl-horizontal DD { margin-left: 200px }

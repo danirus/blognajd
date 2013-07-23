@@ -12,8 +12,8 @@
         "abstract": "This is the abstract of the first story.", 
         "body_markup": "<p>This is the body of the first story.</p>", 
         "visits": 20, 
-        "mod_date": "2013-07-16T09:17:47", 
-        "pub_date": "2013-07-16T09:17:47", 
+        "mod_date": "2013-07-16", 
+        "pub_date": "2013-07-16", 
         "slug": "first-story", 
         "abstract_markup": "<p>This is the abstract of the first story.</p>"
     }
