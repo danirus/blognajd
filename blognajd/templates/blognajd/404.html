@@ -2,7 +2,11 @@
 
 {% block title %}{{ block.super }}&nbsp;&raquo;&nbsp;HTTP 404{% endblock %}
 
+{% block nav-sitename %}<a href="{% url 'index' %}">{{ settings.BLOGNAJD_SITE_SHORT_NAME }}</a>{% endblock %}
+
 {% block jumbotron %}
-<h1>HTTP 404 - Not found</h1>
-<h3>The server has not found anything matching the URI given.</h3>
+<div class="jumbotron">
+  <h1>HTTP 404 - Not found</h1>
+  <p class="lead">The server has not found anything matching the URI given.</p>
+</div>
 {% endblock %}

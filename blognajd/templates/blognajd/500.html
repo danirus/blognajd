@@ -2,7 +2,11 @@
 
 {% block title %}{{ block.super }}&nbsp;&raquo;&nbsp;HTTP 500{% endblock %}
 
+{% block nav-sitename %}<a href="{% url 'index' %}">{{ settings.BLOGNAJD_SITE_SHORT_NAME }}</a>{% endblock %}
+
 {% block jumbotron %}
-<h1>HTTP 500 - Internal Error</h1>
-<h3>The server encountered an unexpected condition which prevented it from fulfilling the request.</h3>
+<div class="jumbotron">
+  <h1>HTTP 500 - Internal Error</h1>
+  <p class="lead">The server encountered an unexpected condition which prevented it from fulfilling the request.</p>
+</div>
 {% endblock %}

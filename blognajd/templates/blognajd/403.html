@@ -2,8 +2,12 @@
 
 {% block title %}{{ block.super }}&nbsp;&raquo;&nbsp;HTTP 403{% endblock %}
 
+{% block nav-sitename %}<a href="{% url 'index' %}">{{ settings.BLOGNAJD_SITE_SHORT_NAME }}</a>{% endblock %}
+
 {% block jumbotron %}
-<h1>HTTP 403 - Forbidden</h1>
-<h3>The request is for something forbidden.<br>
-  Authorization will not help. </h3>
+<div class="jumbotron">
+  <h1>HTTP 403 - Forbidden</h1>
+  <p class="lead">The request is for something forbidden.<br/>
+    Authorization will not help. </p>
+</div>
 {% endblock %}
