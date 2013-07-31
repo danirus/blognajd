@@ -1,8 +1,8 @@
 # blognajd
 
-[![Build Status](https://travis-ci.org/danirus/blognajd.png)](https://travis-ci.org/danirus/blognajd)
+[![Build Status](https://travis-ci.org/danirus/blognajd.png)](https://travis-ci.org/danirus/blognajd) [![Downloads](https://pypi.python.org/pypi/blognajd)
 
-Probably the first django blogging app for Python 3.
+Django blogging app for Python 3.
 
 By Daniel Rus Morales <http://danir.us/>
 
