@@ -1,0 +1,13 @@
+{% extends "blognajd/base.html" %}
+
+{% block title %}{{ block.super }}&nbsp;&raquo;&nbsp;Maximum thread level{% endblock %}
+
+{% block nav-sitename %}<a href="{% url 'index' %}">{{ settings.BLOGNAJD_SITE_SHORT_NAME }}</a>{% endblock %}
+
+{% block jumbotron %}
+<div class="jumbotron">
+  <h1>Maximum Thread Level</h1>
+  <p class="lead">Can not post comments over the thread level {{ max_level }}.</p>
+</div>
+{% endblock %}
+

@@ -1,5 +1,20 @@
-{% load i18n %}
-<div class="subdiv">
-  <p class="text">{% trans "A confirmation message has been sent to your email address. Please, click on the link in the message to confirm the post." %}</p>
-  <p class="sign">{% trans "Thank you for your comment." %}</P>
+{% extends "blognajd/base.html" %}
+
+{% block title %}{{ block.super }}&nbsp;&raquo;&nbsp;Comment confirmation{% endblock %}
+
+{% block nav-sitename %}<a href="{% url 'index' %}">{{ settings.BLOGNAJD_SITE_SHORT_NAME }}</a>{% endblock %}
+
+{% block jumbotron %}
+<div class="jumbotron">
+  <h1>Comment confirmation</h1>
 </div>
+{% endblock %}
+
+{% block body %}
+<div class="row-fluid">
+  <div class="span8 offset2">
+    <p>A confirmation message has been sent to your email address. Please, click on the link in the message to confirm the post.</p>
+    <p class="text-right">-Thank you</p>
+  </div>
+</div>
+{% endblock %}

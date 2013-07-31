@@ -4,7 +4,7 @@ Pillow
 beautifulsoup4
 Markdown
 docutils
-pygments
+Pygments
 -e git+git://github.com/danirus/django-tagging.git#egg=django-tagging
 -e git+git://github.com/danirus/django-markup.git#egg=django-markup
 -e git+git://github.com/danirus/django-contactme.git#egg=django-contactme
