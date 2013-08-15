@@ -2,9 +2,7 @@
 
 [![Build Status](https://travis-ci.org/danirus/blognajd.png)](https://travis-ci.org/danirus/blognajd) [![Downloads](https://pypi.python.org/pypi/blognajd)
 
-Django blogging app for Python 3.
-
-By Daniel Rus Morales <http://danir.us/>
+Simple django blogging application, for Python 3, licensed under the GNU GPLv3.
 
 * http://pypi.python.org/pypi/blognajd/
 * http://github.com/danirus/blognajd/
@@ -16,7 +14,7 @@ Tested under:
 
 ## Install the app and the demo site
 
-Steps to install the app and run the demo site:
+See the theme section below to download a theme from Twitter-bootstrap, or get the files from this separate repository: [my-blognajd-theme](https://github.com/danirus/my-blognajd-theme). Then follow the next steps to install the application and run the demo site:
 
     $ virtualenv -p python3 ~/venv/test-blognadj
     $ source venv/test-blognadj/bin/activate
@@ -31,16 +29,11 @@ Steps to install the app and run the demo site:
 Admin access with user **admin**, password **admin**.
 
 
-## Tests
-
-Includes a **test suite**. If you commit code, please consider adding proper coverage (especially if it has a chance for a regression) in the test suite.
-
-Run the tests with:  ``python setup.py test``
-
-
 ## Theme
 
-Theme based on Twitter-bootstrap 2.3.2. Customize all the components (colors, fonts, layouts, buttons, navbars, forms, etc) in the [Twitter-bootstrap website](http://twitter.github.io/bootstrap/customize.html). Download the bundle and replace the old `bootstrap.min.css` and `bootstrap.min.js` with your own version in your static directory for blognajd: `static/blognajd/css/` and `static/blognajd/js/`.
+The theme is based on Twitter-bootstrap 2.3.2 and its files are not provided within blognajd due to license incompatilibity. 
+
+Go to the [Twitter-bootstrap website](http://twitter.github.io/bootstrap/customize.html) and customize all the components (colors, fonts, layouts, buttons, navbars, forms, etc). Download the bundle and copy `css/bootstrap.min.css` and `js/bootstrap.min.js` to your blognajd static directory `static/blognajd.
 
 
 ## Settings
@@ -59,3 +52,10 @@ There are 10 customizable settings:
     BLOGNAJD_HAS_CONTACT = True # whether contact page and form are active
 
 Static pages (about, projects, contact) do exist already. Edit their templates (`blognajd/about.html`, `blognajd/about.html` and `django_contactme/base.html`) and change their texts in the flatblocks_xtd in the admin interface. Better to see it in the demo site.
+
+
+## Tests
+
+Includes a **test suite**. If you commit code, please consider adding proper coverage (especially if it has a chance for a regression) in the test suite.
+
+Run the tests with:  ``python setup.py test``
