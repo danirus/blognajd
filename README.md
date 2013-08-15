@@ -1,6 +1,6 @@
 # blognajd
 
-[![Build Status](https://travis-ci.org/danirus/blognajd.png)](https://travis-ci.org/danirus/blognajd) [![Downloads](https://pypi.python.org/pypi/blognajd)
+[![Build Status](https://travis-ci.org/danirus/blognajd.png)](https://travis-ci.org/danirus/blognajd) [![Downloads](https://pypip.in/d/blognajd/badge.png)](https://pypi.python.org/pypi/blognajd)
 
 Simple django blogging application, for Python 3, licensed under the GNU GPLv3.
 
