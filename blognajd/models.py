@@ -28,7 +28,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.sitemaps import ping_google
 from django.core.cache import cache
 from django.utils.safestring import mark_safe
-from django.utils.text import truncate_words
 # from django.utils.timezone import now
 
 from django_markup.fields import MarkupField
