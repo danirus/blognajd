@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import sys
-sys.path.insert(0, '../..') # parent of inline_media directory
+sys.path.insert(0, '../..') # parent's app sources directory
 sys.path.insert(0, '..')
 
 import os

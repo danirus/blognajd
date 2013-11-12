@@ -9,7 +9,8 @@ Simple django blogging application, for Python 3, licensed under the GNU GPLv3.
 
 Tested under:
 
-* [Python 3.2 and django 1.5.1](http://buildbot.danir.us/builders/blognajd-py32dj15)
+* [Python 3.2 and django 1.6](http://buildbot.danir.us/builders/blognajd-py32dj16)
+* [Python 3.2 and django 1.5.5](http://buildbot.danir.us/builders/blognajd-py32dj16)
 
 
 ## Install the app and the demo site
