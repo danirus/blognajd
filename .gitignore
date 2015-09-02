@@ -13,3 +13,4 @@ example/demo*/server-static/
 example/demo*/static/
 .emacs.desktop*
 .tox
+blognajd_tests

@@ -9,7 +9,7 @@ cache:
   directories:
     - .tox
 
-end:
+env:
   - TOX_ENV=py34-django17
   - TOX_ENV=py34-django18
   
