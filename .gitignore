@@ -12,4 +12,4 @@ example/demo*/media/cache/
 example/demo*/server-static/
 example/demo*/static/
 .emacs.desktop*
-
+.tox
