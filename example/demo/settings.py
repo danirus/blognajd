@@ -1,5 +1,3 @@
-#-*- coding: utf-8 -*-
-
 import imp
 import os
 
@@ -97,6 +95,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'usersettings.middleware.CurrentUserSettingsMiddleware',
 )
 
 ROOT_URLCONF = "urls"
@@ -106,6 +105,13 @@ TEMPLATE_DIRS = (
         os.path.join(imp.find_module("blognajd")[1], "templates")),
 )
 
+try:
+    import imp
+    imp.find_module('django_comments')
+    django_comments = 'django_comments'
+except ImportError:
+    django_comments = 'django.contrib.comments'
+
 INSTALLED_APPS = (
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -114,16 +120,20 @@ INSTALLED_APPS = (
     "django.contrib.sitemaps",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django.contrib.comments",
+    django_comments,
     "django.contrib.admin",
 
+    "crispy_forms",
     "django_contactme",
     "django_comments_xtd",
     "django_markup",
     "inline_media",
     "flatblocks_xtd",
     "sorl.thumbnail",
-    "tagging",
+    "classytags",
+    "taggit",
+    "taggit_templatetags2",
+    "usersettings",
     "blognajd",
 )
 
@@ -133,6 +143,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "django.core.context_processors.media",
     "django.core.context_processors.static",
+    "usersettings.context_processors.usersettings",
     "blognajd.context_processors.settings",
 )
 
@@ -151,9 +162,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 COMMENTS_APP = "django_comments_xtd"
 COMMENTS_XTD_CONFIRM_EMAIL = True
 COMMENTS_XTD_SALT = b"es-war-einmal-una-princesa-in-a-beautiful-castle"
-
-# django-tagging
-FORCE_LOWERCASE_TAGS = True
 
 THUMBNAIL_BACKEND = "inline_media.sorl_backends.AutoFormatBackend"
 THUMBNAIL_FORMAT = "JPEG"
@@ -210,8 +218,6 @@ LOGGING = {
     }
 }
 
-BLOGNAJD_PAGINATE_BY = 5 # number of stories
-BLOGNAJD_TRUNCATE_TO = 40 # number of words
 LOGIN_URL = "/"
 
 CONTACTME_NOTIFY_TO = "Your Name <user@example.com>"
@@ -225,3 +231,12 @@ INLINE_MEDIA_TEXTAREA_ATTRS = {
 
 COMMENTS_XTD_MAX_THREAD_LEVEL = 2
 COMMENTS_XTD_CONFIRM_EMAIL = True
+COMMENTS_XTD_FORM_CLASS = "blognajd.forms.CrispyXtdCommentForm"
+
+TAGGIT_CASE_INSENSITIVE = True
+
+USERSETTINGS_MODEL='blognajd.SiteSettings'
+
+BLOGNAJD_THEMES_APP_STATIC_PATH = 'blognajd/themes'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

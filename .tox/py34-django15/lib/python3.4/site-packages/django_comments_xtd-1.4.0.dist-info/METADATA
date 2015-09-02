@@ -1,0 +1,23 @@
+Metadata-Version: 2.0
+Name: django-comments-xtd
+Version: 1.4.0
+Summary: Django Comments Framework extension app with thread support, follow up notifications and email confirmations.
+Home-page: http://pypi.python.org/pypi/django-comments-xtd
+Author: Daniel Rus Morales
+Author-email: mbox@danir.us
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Framework :: Django
+Classifier: Natural Language :: English
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content :: News/Diary
+
+A reusable Django app that extends django-contrib-comments Framework with thread support, following up notifications and comments that only hits the database after users confirm them by email.
+
+

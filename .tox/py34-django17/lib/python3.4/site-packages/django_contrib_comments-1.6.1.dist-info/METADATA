@@ -1,0 +1,38 @@
+Metadata-Version: 2.0
+Name: django-contrib-comments
+Version: 1.6.1
+Summary: The code formerly known as django.contrib.comments.
+Home-page: http://github.com/django/django-contrib-comments
+Author: Django Software Foundation
+Author-email: jacob@jacobian.org
+License: BSD
+Platform: any
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Requires-Dist: Django (>=1.6)
+
+===========================
+Django "excontrib" Comments
+===========================
+
+Django used to include a comments framework; since Django 1.6 it's been
+separated to a separate project. This is that project.
+
+This framework can be used to attach comments to any model, so you can use it
+for comments on blog entries, photos, book chapters, or anything else.
+
+For details, `consult the documentation`__.
+
+__ http://django-contrib-comments.readthedocs.org/
+

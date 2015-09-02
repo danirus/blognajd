@@ -1,0 +1,14 @@
+<script type="text/javascript">
+window.onload = function() {
+  try {
+      TagCanvas.Start('{{ element_id }}_canvas', '{{ element_id }}_tags',{
+        reverse: true,
+        depth: 0.8,
+        maxSpeed: 0.05
+      });
+    } catch(e) {
+      // something went wrong, hide the canvas container
+        document.getElementById('{{ element_id }}').style.display = 'none';
+    }
+};
+</script>

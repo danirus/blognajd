@@ -1,29 +1,76 @@
-<form id="CF" class="std" action="{% url 'contactme-post-contact-form' %}" method="post">{% csrf_token %}
+<form id="CF" class="form-horizontal" action="{% url 'contactme-post-contact-form' %}" method="post">{% csrf_token %}
 
-  {% if form.errors %}
-  <div class="alert alert-error">
-    <strong>Please correct the errors below</strong>
-  </div>
-  {% endif %}
+  <fieldset>
+    <legend>Your contact details</legend>
 
-  {% for field in form %}
-  {% if field.is_hidden %}
-  <div style="display:none">{{ field }}</div>
-  {% else %}
-  <div {% if field.errors %} class="error"{% endif %}
-    {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
-    {% ifequal field.name "message" %}
-    {{ field }}
+    {% if form.errors %}
+    <div class="alert alert-danger">
+      <strong>Please correct the errors below</strong>
+    </div>
+    {% endif %}
+
+    {% for field in form %}
+    {% if field.is_hidden %}
+    <div style="display:none">{{ field }}</div>
     {% else %}
-    {{ field.label_tag }} {{ field }} <span class="help_text">{{ field.help_text }}</span>
-    {% endifequal %}
-  </div>
-  {% if field.errors %}{{ field.errors }}{% endif %}
-  {% endif %}
-  {% endfor %}
 
-  <p class="buttons">
-    <input type="submit" id="id_post" name="post" class="btn btn-primary" value="post" />
-    <input type="submit" id="id_preview" name="preview" class="btn" value="preview" />
-  </p>
+    {% ifequal field.name "honeypot" %}
+    <div style="display:none">{{ field }}</div>
+    {% endifequal %}
+      
+    {% ifequal field.name "name" %}
+    <div class="form-group {% if field.errors %}has-error{% endif %}">
+      <label for="name" class="col-lg-3 control-label">{{ field.label }}</label>
+      <div class="col-lg-8">
+	<input type="text" class="form-control" name="name" id="id_name" maxlength="100" value="{{ field.value }}">
+	{% if field.help_text %}
+	<span class="help-block">{{ field.help_text }}</span>
+	{% endif %}
+	{% if field.errors %}
+	<div class="small help-block text-danger">{{ field.errors }}</div>
+	{% endif %}
+      </div>
+    </div>
+    {% endifequal %}
+
+    {% ifequal field.name "email" %}
+    <div class="form-group {% if field.errors %}has-error{% endif %}">
+      <label for="email" class="col-lg-3 control-label">{{ field.label }}</label>
+      <div class="col-lg-8">
+	<input type="text" class="form-control" name="email" id="id_email" maxlength="200" value="{{ field.value }}">
+	{% if field.help_text %}
+	<span class="help-block">{{ field.help_text }}</span>
+	{% endif %}
+	{% if field.errors %}
+	<div class="small help-block text-danger">{{ field.errors }}</div>
+	{% endif %}
+      </div>
+    </div>
+    {% endifequal %}
+
+    {% ifequal field.name "message" %}
+    <div class="form-group {% if field.errors %}has-error{% endif %}">
+      <label for="message" class="col-lg-3 control-label">{{ field.label }}</label>
+      <div class="col-lg-8">
+	<textarea class="form-control" rows="3" name="message" id="id_message">{{ field.value }}</textarea>
+	{% if field.help_text %}
+	<span class="help-block">{{ field.help_text }}</span>
+	{% endif %}
+	{% if field.errors %}
+	<div class="small help-block text-danger">{{ field.errors }}</div>
+	{% endif %}
+      </div>
+    </div>
+    {% endifequal %}
+    
+    {% endif %}
+    {% endfor %}
+
+    <div class="form-group">
+      <div class="col-lg-offset-3 col-md-offset-3 col-lg-9 col-md-9">
+	<button type="submit" id="id_post" name="post" class="btn btn-primary" value="post">Post</button>
+	<button type="submit" id="id_preview" name="preview" class="btn btn-default" value="preview">Preview</button>
+      </div>
+    </div>
+  </fieldset>
 </form>

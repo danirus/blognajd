@@ -1,30 +1,37 @@
+{% load blognajd_themes %}
+{% load staticfiles %}
 {% load flatblock_xtd_tags %}
-{% load url from future %}
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
   <head>
     <meta charset="utf-8" />
-    <title>{% block title %}{{ settings.BLOGNAJD_SITE_SHORT_NAME }}{% endblock %}</title>
+    <title>{% block title %}{{ usersettings.site_short_name }}{% endblock %}</title>
     {% if settings.DEBUG %}<meta http-equiv="pragma" content="no-cache"/>{% endif %}
     <meta name="robots" content="index,follow">
-    <meta name="author" content="{{ settings.BLOGNAJD_META_AUTHOR }}">
-    <meta name="keywords" content="{{ settings.BLOGNAJD_META_KEYWORDS }}">
-    <meta name="description" content="{% block meta-description %}{{ settings.BLOGNAJD_META_DESCRIPTION }}{% endblock %}">
+    <meta name="author" content="{{ usersettings.meta_author }}">
+    <meta name="keywords" content="{{ usersettings.meta_keywords }}">
+    <meta name="description" content="{% block meta-description %}{{ usersettings.meta_description }}{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block extrahead %}{% endblock %}
-    <link href="{{ STATIC_URL }}blognajd/css/bootstrap.min.css" rel="Stylesheet">
-    <link href="{{ STATIC_URL }}blognajd/css/theme.css" rel="Stylesheet">
+
+    {% block extrahead %}{% endblock %}    
+
+    <link href="{% theme_static 'css/bootstrap.min.css' %}" rel="Stylesheet">
+    <link href="{% theme_static 'css/theme.css' %}" rel="Stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 
+	 elements and media queries -->
+    <!--[if lt IE 9]>
+	<script src="{% static 'lib/html5shiv.js' %}"></script>
+	<script src="{% static 'lib/respond.min.js' %}"></script>
+	<![endif]-->
+
     {% block extracss %}{% endblock %}
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}blognajd/js/bootstrap.min.js"></script>
-    {% block extrajs %}{% endblock %}
+
   </head>
   <body>
     <div class="container-narrow">
       <div id="header">
 	<ul class="nav nav-pills pull-right">
-	  {% if settings.BLOGNAJD_HAS_ABOUT %}{% block nav-about %}<li><a href="{% url 'about' %}">about</a></li>{% endblock %}{% endif %}
+	  {% if usersettings.has_about_page %}{% block nav-about %}<li><a href="{% url 'about' %}">about</a></li>{% endblock %}{% endif %}
 	  {% if user.is_authenticated %}
 	  <li class="dropdown">
 	    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -48,10 +55,10 @@
 	      <li><a href="{% url 'tags' %}">tags</a></li>
 	    </ul>
 	  </li>
-	  {% if settings.BLOGNAJD_HAS_PROJECTS %}{% block nav-projects %}<li><a href="{% url 'projects' %}">projects</a></li>{% endblock %}{% endif %}
-	  {% if settings.BLOGNAJD_HAS_CONTACT %}{% block nav-contact %}<li><a href="{% url 'contactme-get-contact-form' %}">contact</a></li>{% endblock %}{% endif %}
+	  {% if usersettings.has_projects_page %}{% block nav-projects %}<li><a href="{% url 'projects' %}">projects</a></li>{% endblock %}{% endif %}
+	  {% if usersettings.has_contact_page %}{% block nav-contact %}<li><a href="{% url 'contactme-get-contact-form' %}">contact</a></li>{% endblock %}{% endif %}
 	</ul>
-	<h3 class="muted">{% block nav-sitename %}{{ settings.BLOGNAJD_SITE_SHORT_NAME }}{% endblock %}</h3>
+	<h3 class="muted">{% block nav-sitename %}{{ usersettings.site_short_name }}{% endblock %}</h3>
       </div><!-- header -->
       <hr>
 
@@ -67,6 +74,13 @@
 	<p>{% flatblock_xtd 'footer-license' %}</p>
       </div>
     </div>
+
+    {% block modal %}{% endblock %}
+    
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    {% block extrajs %}{% endblock %}
 
   </body>
 </html>

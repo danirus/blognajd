@@ -1,0 +1,49 @@
+actionid: py34-django17
+msg: getenv
+cmdargs: [local('/Users/danirus/Code/Repos/blognajd/.tox/py34-django17/bin/pip'), 'install', 'six', 'pytest', 'pytest-cov', 'pytest-django', 'lxml', 'Pillow', 'sorl-thumbnail', 'beautifulSoup4', 'django-taggit', 'django-taggit-templatetags2', 'django-crispy-forms', 'django-usersettings2', 'markdown', '-r/Users/danirus/Code/Repos/blognajd/tox-pip-requirements.txt', 'django-contactme', 'django-contrib-comments', 'django-comments-xtd>=1.4', 'django-inline-media>=1.3', 'django-flatblocks-xtd', 'Django>=1.7,<1.8']
+env: {'TMUX_PANE': '%6', '_': '/usr/local/bin/tox', '__CF_USER_TEXT_ENCODING': '0x1F5:0x0:0x0', 'SHELL': '/bin/bash', 'EC2_HOME': '/usr/local/Cellar/ec2-api-tools/1.6.12.0/libexec', 'SSH_AUTH_SOCK': '/private/tmp/com.apple.launchd.WyuFH2hTze/Listeners', 'SHLVL': '2', 'TERM_PROGRAM_VERSION': '343.7', 'LC_CTYPE': 'UTF-8', 'DJANGO_SETTINGS_MODULE': 'blognajd.tests.settings', 'TERM': 'screen', 'TERM_PROGRAM': 'Apple_Terminal', 'Apple_PubSub_Socket_Render': '/private/tmp/com.apple.launchd.nk7xhQfMtC/Render', 'LC_ALL': 'en_US.UTF-8', 'EC2_CERT': '/Users/danirus/.ec2/cert-ELYI3LM4EJJCGCOTQWXDCBLGM5WDJMRM.pem', 'TMUX': '/private/var/folders/2k/rl1hz6ps5cj2kdx_m_gfxmtw0000gn/T/tmux-501/default,700,0', 'PATH': '/Users/danirus/Code/Repos/blognajd/.tox/py34-django17/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/usr/local/sbin:/Library/PostgreSQL/9.3/bin/:/Applications/Postgres.app/Contents/Versions/9.3/bin:/Users/danirus/Code/Repos/Chromium/depot_tools:/Library/PostgreSQL/9.3/bin/:/Applications/Postgres.app/Contents/Versions/9.3/bin:/Users/danirus/Code/Repos/Chromium/depot_tools', 'NODE_PATH': '/usr/local/lib/node_modules', 'VIRTUAL_ENV': '/Users/danirus/Code/Repos/blognajd/.tox/py34-django17', 'TMPDIR': '/var/folders/2k/rl1hz6ps5cj2kdx_m_gfxmtw0000gn/T/', 'PS1': '\\h:\\W \\u\\$ ', 'EC2_KEYPAIR': 'webmaster', 'OLDPWD': '/Users/danirus/Code/Repos', 'DISPLAY': '/private/tmp/com.apple.launchd.7LgYUuIjsp/org.macosforge.xquartz:0', 'USER': 'danirus', 'LANG': 'en_US.UTF-8', 'PYTHONHASHSEED': '3475285456', 'JAVA_HOME': '/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home', 'XPC_FLAGS': '0x0', 'PYTHONPATH': '/Users/danirus/Code/Repos/blognajd:/Users/danirus/Code/Repos/blognajd', 'XPC_SERVICE_NAME': '0', 'TERM_SESSION_ID': '54DA1F97-16BD-43F1-9930-30CE5377A361', 'LOGNAME': 'danirus', 'PWD': '/Users/danirus/Code/Repos/blognajd', 'EC2_URL': 'https://ec2.us-west-2.amazonaws.com', 'HOME': '/Users/danirus', 'CLASSPATH': '/Users/danirus/Lucene/lucene-4.7.0/core/lucene-core-4.7.0.jar:/Users/danirus/Lucene/lucene-4.7.0/queryparser/lucene-queryparser-4.7.0.jar:/Users/danirus/Lucene/lucene-4.7.0/analysis/common/lucene-analyzers-common-4.7.0.jar:/Users/danirus/Lucene/lucene-4.7.0/demo/lucene-demo-4.7.0.jar', 'EC2_PRIVATE_KEY': '/Users/danirus/.ec2/pk-ELYI3LM4EJJCGCOTQWXDCBLGM5WDJMRM.pem'}
+
+You are using pip version 7.1.0, however version 7.1.2 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+Collecting six
+  Using cached six-1.9.0-py2.py3-none-any.whl
+Collecting pytest
+  Using cached pytest-2.7.2-py2.py3-none-any.whl
+Collecting pytest-cov
+  Using cached pytest_cov-2.1.0-py2.py3-none-any.whl
+Collecting pytest-django
+  Using cached pytest_django-2.8.0-py2.py3-none-any.whl
+Collecting lxml
+Collecting Pillow
+  Using cached Pillow-2.9.0-cp34-cp34m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl
+Collecting sorl-thumbnail
+  Using cached sorl_thumbnail-12.3-py2.py3-none-any.whl
+Collecting beautifulSoup4
+  Using cached beautifulsoup4-4.4.0-py3-none-any.whl
+Collecting django-taggit
+  Using cached django_taggit-0.17.0-py2.py3-none-any.whl
+Collecting django-taggit-templatetags2
+Collecting django-crispy-forms
+Collecting django-usersettings2
+Collecting markdown
+  Using cached Markdown-2.6.2-py2.py3-none-any.whl
+Collecting django-contactme
+  Using cached django_contactme-1.2.1-py2.py3-none-any.whl
+Collecting django-contrib-comments
+  Using cached django_contrib_comments-1.6.1-py2.py3-none-any.whl
+Collecting django-comments-xtd>=1.4
+  Using cached django_comments_xtd-1.4.0-py3-none-any.whl
+Collecting django-inline-media>=1.3
+  Using cached django_inline_media-1.3.0-py2.py3-none-any.whl
+Collecting django-flatblocks-xtd
+Collecting Django<1.8,>=1.7
+  Using cached Django-1.7.10-py2.py3-none-any.whl
+Obtaining django-markup from git+git://github.com/bartTC/django-markup.git#egg=django-markup (from -r /Users/danirus/Code/Repos/blognajd/tox-pip-requirements.txt (line 1))
+  Cloning git://github.com/bartTC/django-markup.git to ./.tox/py34-django17/src/django-markup
+Collecting py>=1.4.29 (from pytest)
+  Using cached py-1.4.30-py2.py3-none-any.whl
+Collecting coverage>=3.7.1 (from pytest-cov)
+Collecting django-classy-tags>=0.5.1 (from django-taggit-templatetags2)
+Installing collected packages: six, py, pytest, coverage, pytest-cov, pytest-django, lxml, Pillow, sorl-thumbnail, beautifulSoup4, django-taggit, Django, django-classy-tags, django-taggit-templatetags2, django-crispy-forms, django-usersettings2, markdown, django-contactme, django-contrib-comments, django-comments-xtd, django-inline-media, django-flatblocks-xtd, django-markup
+  Running setup.py develop for django-markup
+Successfully installed Django-1.7.10 Pillow-2.9.0 beautifulSoup4-4.4.0 coverage-3.7.1 django-classy-tags-0.6.2 django-comments-xtd-1.4.0 django-contactme-1.2.1 django-contrib-comments-1.6.1 django-crispy-forms-1.5.1 django-flatblocks-xtd-0.1a1 django-inline-media-1.3.0 django-markup django-taggit-0.17.0 django-taggit-templatetags2-1.4.0 django-usersettings2-0.1.5 lxml-3.4.4 markdown-2.6.2 py-1.4.30 pytest-2.7.2 pytest-cov-2.1.0 pytest-django-2.8.0 six-1.9.0 sorl-thumbnail-12.3

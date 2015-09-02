@@ -7,7 +7,7 @@
 <link rel="alternate" type="application/rss+xml" title="Stories" href="{{ baseurl }}{% url 'stories-feed' %}">
 {% endblock %}
 
-{% block nav-sitename %}<a href="{% url 'index' %}">{{ settings.BLOGNAJD_SITE_SHORT_NAME }}</a>{% endblock %}
+{% block nav-sitename %}<a href="{% url 'index' %}">{{ usersettings.site_short_name }}</a>{% endblock %}
 
 {% block class-nav-blog %}active{% endblock %}
 
@@ -16,8 +16,8 @@
 {% endblock %}
 
 {% block body %}
-<div id="body-blog" class="row-fluid">
-  <div id="story-list-blog-index" class="span11">
+<div id="body-blog" class="row">
+  <div id="story-list-blog-index" class="col-lg-11 col-md-11">
     {% if object_list %}
     {% for object in object_list %}
     {% include "blognajd/includes/story_blog.html" %}
@@ -29,17 +29,17 @@
 </div>
 
 {% if is_paginated %}
-<div class="pagination pagination-centered">
-  <ul>
+<nav>
+  <ul class="pager">
     {% if page_obj.has_previous %}
-    <li><a href="?page={{ page_obj.previous_page_number }}">Prev</a></li>
+    <li><a href="?page={{ page_obj.previous_page_number }}"><span aria-hidden="true">&larr;</span> older</a></li>
     {% else %}
-    <li class="disabled"><a href="#">Prev</a></li>
+    <li class="disabled"><a href="#"><span aria-hidden="true">&larr;</span> older</a></li>
     {% endif %}
     {% if page_obj.has_next %}
-    <li><a href="?page={{ page_obj.next_page_number }}">Next</a></li>
+    <li><a href="?page={{ page_obj.next_page_number }}">newer <span aria-hidden="true">&rarr;</span></a></li>
     {% else %}
-    <li class="disabled"><a href="#">Next</a></li>
+    <li class="disabled"><a href="#">newer <span aria-hidden="true">&rarr;</span></a></li>
     {% endif %}
   </ul>
 </div>

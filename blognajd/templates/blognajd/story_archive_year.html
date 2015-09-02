@@ -2,7 +2,7 @@
 
 {% block title %}{{ block.super }}&nbsp;&raquo;&nbsp;archive {{ year.year }}{% endblock %}
 
-{% block nav-sitename %}<a href="{% url 'index' %}">{{ settings.BLOGNAJD_SITE_SHORT_NAME }}</a>{% endblock %}
+{% block nav-sitename %}<a href="{% url 'index' %}">{{ usersettings.site_short_name }}</a>{% endblock %}
 
 {% block class-nav-blog %}active{% endblock %}
 
@@ -13,23 +13,25 @@
 {% endblock %}
 
 {% block body %}
-<div id="body-blog-archive" class="row-fluid">
-  {% for object in object_list reversed %}
-  {% include "blognajd/includes/story_archive.html" %}    
-  {% endfor %}
+<div id="body-blog-archive">
+  <div class="row">
+    {% for object in object_list reversed %}
+    {% include "blognajd/includes/story_archive.html" %}    
+    {% endfor %}
+  </div>
 </div>
 
-<div class="pagination pagination-centered">
-  <ul>
+<nav>
+  <ul class="pager">
     {% if previous_year %}
-    <li><a href="{% url 'archive-year' previous_year.year %}">Prev</a></li>
+    <li><a href="{% url 'archive-year' previous_year.year %}"><span aria-hidden="true">&larr;</span> older</a></li>
     {% else %}
-    <li class="disabled"><a href="#">Prev</a></li>
+    <li class="disabled"><a href="#"><span aria-hidden="true">&larr;</span> older</a></li>
     {% endif %}
     {% if next_year %}
-    <li><a href="{% url 'archive-year' next_year.year %}">Next</a></li>
+    <li><a href="{% url 'archive-year' next_year.year %}">newer <span aria-hidden="true">&rarr;</span></a></li>
     {% else %}
-    <li class="disabled"><a href="#">Next</a></li>
+    <li class="disabled"><a href="#">newer <span aria-hidden="true">&rarr;</span></a></li>
     {% endif %}
   </ul>
 </div>

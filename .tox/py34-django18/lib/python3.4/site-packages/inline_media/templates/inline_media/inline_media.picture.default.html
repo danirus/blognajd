@@ -1,0 +1,30 @@
+{% load i18n thumbnail %}
+
+<span class="inline {{ class }}">
+  {% thumbnail object.picture size as im %}
+  {% if object.show_as_link %}
+  <a href="{{ object.picture.url }}" class="picture" rel="{{ object.sha1 }}" title="{{ object.description|striptags }}">
+    <img src="{{ im.url }}" alt="{{ object.title }}">
+  </a>
+  {% else %}
+  <img src="{{ im.url }}" alt="{{ object.title }}">
+  {% endif %}
+  {% endthumbnail %}
+  {% if object.show_description_inline and object.description %}
+  <span class="inline_description">{{ object.description|safe }}</span>
+  {% endif %}
+  {% if object.show_author or object.show_license %}
+  <span class="inline_credits">
+    {% if object.show_author %}
+    <span class="inline_author">
+      {% trans "author" %}:&nbsp;{{ object.author }}
+    </span>
+    {% endif %}
+    {% if object.show_license %}
+    <span class="inline_license">
+      {% trans "license" %}:&nbsp;<a href="{{ object.license.link }}" target="_new" style="font-size:0.9em">{{ object.license.name }}</a>
+    </span>
+    {% endif %}
+  </span>
+  {% endif %}
+</span>

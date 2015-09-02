@@ -1,9 +1,9 @@
 {% extends "blognajd/base.html" %}
-{% load tagging_tags %}
+{% load taggit_templatetags2_tags %}
 
 {% block title %}{{ block.super }}&nbsp;&raquo;&nbsp;tags{% endblock %}
 
-{% block nav-sitename %}<a href="{% url 'index' %}">{{ settings.BLOGNAJD_SITE_SHORT_NAME }}</a>{% endblock %}
+{% block nav-sitename %}<a href="{% url 'index' %}">{{ usersettings.site_short_name }}</a>{% endblock %}
 
 {% block class-nav-blog %}active{% endblock %}
 
@@ -14,12 +14,16 @@
 {% endblock %}
 
 {% block body %}
-<div id="body-blog-tags" class="row-fluid">
-  <div class="offset3 span6">
-    {% tag_cloud_for_models blognajd.Story as tags with steps=9 distribution=linear %}
-    <div class="text-center tagcloud">
-      {% for tag in tags %}<a href="{% url 'tag-detail' tag %}" class="tag label">{{ tag.name }}</a>{% endfor %}
-    </div>    
+<div id="body-blog-tags">
+  <div class="row">
+    <div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8">
+      {% get_taglist as tags for 'blognajd.Story' %}
+      <ul class="tags">
+	{% for tag in tags %}
+	<li><a href="{% url 'tag-detail' tag.slug %}" class="label label-default">{{ tag.name }}</a></li>
+	{% endfor %}
+      </ul>
+    </div>
   </div>
 </div>
 {% endblock %}

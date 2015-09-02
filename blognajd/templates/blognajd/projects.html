@@ -1,21 +1,22 @@
 {% extends "blognajd/base.html" %}
+{% load staticfiles %}
 {% load flatblock_xtd_tags %}
 
 {% block title %}{{ block.super }}&nbsp;&raquo;&nbsp;projects{% endblock %}
 
 {% block extracss %}
-<link rel="stylesheet" href="{{ STATIC_URL }}inline_media/css/inline_media.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="{{ STATIC_URL }}prettyphoto-3.1.3/css/prettyPhoto.css" type="text/css" media="screen" charset="utf-8" />
+<link href="{% static 'inline_media/css/inline_media.css' %}" media="screen" />
+<link href="{% static 'prettyphoto-3.1.3/css/prettyPhoto.css' %}" media="screen" />
 {% endblock %}
 
 {% block extrajs %}
-<script type="text/javascript" src="{{ STATIC_URL }}inline_media/js/inline_media.js"></script>
-<script src="{{ STATIC_URL }}prettyphoto-3.1.3/js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+<script src="{% static 'inline_media/js/inline_media.js' %}"></script>
+<script src="{% static 'prettyphoto-3.1.3/js/jquery.prettyPhoto.js' %}"></script>
 {% endblock %}
 
-{% block nav-projects %}<li class="active"><a href="{% url 'about' %}">about</a></li>{% endblock %}
+{% block nav-projects %}<li class="active"><a href="{% url 'about' %}">projects</a></li>{% endblock %}
 
-{% block nav-sitename %}<a href="{% url 'index' %}">{{ settings.BLOGNAJD_SITE_SHORT_NAME }}</a>{% endblock %}
+{% block nav-sitename %}<a href="{% url 'index' %}">{{ usersettings.site_short_name }}</a>{% endblock %}
 
 {% block jumbotron %}
 {% flatblock_xtd "jumbotron-projects" using "flatblocks_xtd/jumbotron.html" %}

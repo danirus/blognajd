@@ -1,5 +1,4 @@
 {% extends "blognajd/base.html" %}
-{% load tagging_tags %}
 
 {% block extrahead %}
 <link rel="alternate" type="application/rss+xml" title="Stories tagged as {{ object.name }}" href="{{ baseurl }}{% url 'tag-detail-feed' object.name  %}">
@@ -7,7 +6,7 @@
 
 {% block title %}{{ block.super }}&nbsp;&raquo;&nbsp;tag {{ object.name }}{% endblock %}
 
-{% block nav-sitename %}<a href="{% url 'index' %}">{{ settings.BLOGNAJD_SITE_SHORT_NAME }}</a>{% endblock %}
+{% block nav-sitename %}<a href="{% url 'index' %}">{{ usersettings.site_short_name }}</a>{% endblock %}
 
 {% block class-nav-blog %}active{% endblock %}
 
@@ -18,11 +17,11 @@
 {% endblock %}
 
 {% block body %}
-<div id="body-index" class="row-fluid">
-  <div id="story-list-index" class="span11">
+<div id="body-index" class="row">
+  <div id="story-list-index" class="col-lg-11 col-md-11">
     {% if object_list %}
     {% for item in object_list %}
-    {% include "blognajd/includes/story_index.html" with object=item.object %}
+    {% include "blognajd/includes/story_index.html" with object=item %}
     {% endfor %}
     {% else %}
     <h5>No story yet.</h5>
@@ -31,17 +30,17 @@
 </div>
 
 {% if is_paginated %}
-<div class="pagination pagination-centered">
-  <ul>
+<nav>
+  <ul class="pager">
     {% if page_obj.has_previous %}
-    <li><a href="?page={{ page_obj.previous_page_number }}">Prev</a></li>
+    <li><a href="?page={{ page_obj.previous_page_number }}"><span aria-hidden="true">&larr;</span> older</a></li>
     {% else %}
-    <li class="disabled"><a href="#">Prev</a></li>
+    <li class="disabled"><a href="#"><span aria-hidden="true">&larr;</span> older</a></li>
     {% endif %}
     {% if page_obj.has_next %}
-    <li><a href="?page={{ page_obj.next_page_number }}">Next</a></li>
+    <li><a href="?page={{ page_obj.next_page_number }}">newer <span aria-hidden="true">&rarr;</span></a></li>
     {% else %}
-    <li class="disabled"><a href="#">Next</a></li>
+    <li class="disabled"><a href="#">newer <span aria-hidden="true">&rarr;</span></a></li>
     {% endif %}
   </ul>
 </div>

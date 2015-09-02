@@ -1,0 +1,22 @@
+{% load i18n %}
+
+<span class="inline {{ class }}" style="text-align:center">
+  <img src="{{ object.picture.url }}" alt="{{ object.title }}">
+  {% if object.show_description_inline and object.description %}
+  <span class="inline_description">{{ object.description|safe }}</span>
+  {% endif %}
+  {% if object.show_author or object.show_license %}
+  <span class="inline_credits">
+    {% if object.show_author %}
+    <span class="inline_author">
+      {% trans "author" %}:&nbsp;{{ object.author }}
+    </span>
+    {% endif %}
+    {% if object.show_license %}
+    <span class="inline_license">
+      {% trans "license" %}:&nbsp;<a href="{{ object.license.link }}" target="_new" style="font-size:0.9em">{{ object.license.name }}</a>
+    </span>
+    {% endif %}
+  </span>
+  {% endif %}
+</span>

@@ -1,24 +1,24 @@
 {% load comments_xtd %}
-<div class="comment row-fluid">
-  <div class="offset{{ comment.level }} 
-	      {% ifequal comment.level 0 %}span12
-	      {% else %}{% ifequal comment.level 1 %}span11
-	      {% else %}{% ifequal comment.level 2 %}span10
+<div class="comment row">
+  <div class="col-lg-offset-{{ comment.level }} col-md-offset-{{ comment.level }}
+	      {% ifequal comment.level 0 %}col-lg-12 col-md-12
+	      {% else %}{% ifequal comment.level 1 %}col-lg-11 col-md-11
+	      {% else %}{% ifequal comment.level 2 %}col-lg-10 col-md-10
 	      {% endifequal %}{% endifequal %}{% endifequal %}">
-    <div class="row-fluid">
-      <div class="span10">
+    <div class="row">
+      <div class="col-lg-10 col-md-10">
 	<span class="date">{{ comment.submit_date|date:"F j, Y" }}</span>
 	&nbsp;-&nbsp;
 	{{ comment.name }}{% if comment.user_url %},&nbsp;<small class="monospace">{{ comment.user_url|urlizetrunc:28 }}</small>{% endif %}
       </div>
       {% if comment.allow_thread %}
-      <div class="span2 pull-right text-right">
+      <div class="col-lg-2 col-md-2 pull-right text-right">
 	<small><a href="{{ comment.get_reply_url }}">reply</a></small>
       </div>
       {% endif %}
     </div>
-    <div class="row-fluid">
-      <div class="span12 text">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 text">
 	{{ comment.comment|render_markup_comment }}
       </div>
     </div>

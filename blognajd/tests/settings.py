@@ -1,21 +1,3 @@
-#-*- coding: utf-8 -*-
-
-# Blognajd,
-# Copyright (C) 2013, Daniel Rus Morales
-
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 import os
 
 DEBUG = False
@@ -31,12 +13,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE':   'django.db.backends.sqlite3', 
-        'NAME':     'blognajd_tests',
-        'USER':     '', 
-        'PASSWORD': '', 
-        'HOST':     '', 
-        'PORT':     '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'blognajd_tests',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -80,17 +62,26 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'usersettings.middleware.CurrentUserSettingsMiddleware',
 )
 
 ROOT_URLCONF = 'blognajd.tests.urls'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Put strings here, like "/home/html/django_templates" or
+    # "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(os.path.dirname(__file__), "..", "templates"),
     os.path.join(os.path.dirname(__file__), "templates"),
 )
+
+try:
+    import imp
+    imp.find_module('django_comments')
+    django_comments = 'django_comments'
+except ImportError:
+    django_comments = 'django.contrib.comments'
 
 INSTALLED_APPS = [
     "django.contrib.auth",
@@ -99,15 +90,19 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.sitemaps",
     'django.contrib.messages',
-    "django.contrib.comments",
+    "django.contrib.staticfiles",
+    django_comments,
 
+    "crispy_forms",
     "django_contactme",
     "django_comments_xtd",
     "django_markup",
     "inline_media",
     "flatblocks_xtd",
     "sorl.thumbnail",
-    "tagging",
+    "taggit",
+    "taggit_templatetags2",
+    "usersettings",
     "blognajd",
     'blognajd.tests',
 ]
@@ -118,11 +113,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "django.core.context_processors.media",
     "django.core.context_processors.static",
+    "usersettings.context_processors.usersettings",
     "blognajd.context_processors.settings",
 )
 
-DEFAULT_FROM_EMAIL  = "Alice Bloggs <alice@example.com>"
-SERVER_EMAIL        = DEFAULT_FROM_EMAIL
+DEFAULT_FROM_EMAIL = "Alice Bloggs <alice@example.com>"
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -130,13 +126,9 @@ COMMENTS_APP = "django_comments_xtd"
 COMMENTS_XTD_CONFIRM_EMAIL = True
 COMMENTS_XTD_SALT = "es-war-einmal-una-princesa-in-a-beautiful-castle"
 
-FORCE_LOWERCASE_TAGS = True # django-tagging
-
 THUMBNAIL_BACKEND = "inline_media.sorl_backends.AutoFormatBackend"
 THUMBNAIL_FORMAT = "JPEG"
 
-BLOGNAJD_PAGINATE_BY = 5 # number of stories
-BLOGNAJD_TRUNCATE_TO = 40 # number of words
 LOGIN_URL = "/"
 
 CONTACTME_NOTIFY_TO = "Your Name <user@example.com>"
@@ -150,3 +142,9 @@ INLINE_MEDIA_TEXTAREA_ATTRS = {
 
 COMMENTS_XTD_MAX_THREAD_LEVEL = 2
 COMMENTS_XTD_CONFIRM_EMAIL = False
+
+TAGGIT_CASE_INSENSITIVE = True
+
+USERSETTINGS_MODEL = 'blognajd.SiteSettings'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

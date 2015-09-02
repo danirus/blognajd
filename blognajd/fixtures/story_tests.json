@@ -1,21 +1,21 @@
 [
-{
+  {
     "pk": 1, 
     "model": "blognajd.story", 
     "fields": {
-        "body": "This is the body of the first story.", 
-        "status": 2, 
-        "allow_comments": true, 
-        "title": "First story", 
-        "markup": "markdown", 
-        "tags": "", 
-        "abstract": "This is the abstract of the first story.", 
-        "body_markup": "<p>This is the body of the first story.</p>", 
-        "visits": 20, 
-        "mod_date": "2013-07-16", 
-        "pub_date": "2013-07-16", 
-        "slug": "first-story", 
-        "abstract_markup": "<p>This is the abstract of the first story.</p>"
+      "body": "This is the body of the first story.", 
+      "status": 2, 
+      "allow_comments": true, 
+      "title": "First story", 
+      "markup": "markdown", 
+      "tags": "", 
+      "abstract": "This is the abstract of the first story.", 
+      "body_markup": "<p>This is the body of the first story.</p>", 
+      "visits": 20, 
+      "mod_date": "2013-07-16", 
+      "pub_date": "2013-07-16", 
+      "slug": "first-story", 
+      "abstract_markup": "<p>This is the abstract of the first story.</p>"
     }
-}
+  }
 ]

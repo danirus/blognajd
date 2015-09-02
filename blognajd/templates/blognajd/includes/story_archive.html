@@ -1,12 +1,16 @@
 {% load inlines %}
 
-<article class="blog-archive-index row-fluid">
-  <div class="date text-right span2">
-    {{ object.pub_date|date:"j M" }}
-  </div>
-  <div class="span10">
-    <div class="headline">
-      <a href="{{ object.get_absolute_url }}">{{ object.title }}</a>{% if object.status == 1 %}&nbsp;<span class="label label-important">draft</span>{% endif %}
+<article class="blog-archive-index">
+  <div class="row">
+    <div class="col-lg-2 col-md-2">
+      <div class="date text-right">
+	{{ object.pub_date|date:"j M" }}
+      </div>
+    </div>
+    <div class="col-lg-10 col-md-10">
+      <div class="headline">
+	<a href="{{ object.get_absolute_url }}">{{ object.title }}</a>{% if object.status == 1 %}&nbsp;<span class="label label-important">draft</span>{% endif %}
+      </div>
     </div>
   </div>
 </article>

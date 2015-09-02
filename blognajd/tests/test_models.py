@@ -1,32 +1,16 @@
-#-*- coding: utf-8 -*-
-
-# Blognajd,
-# Copyright (C) 2013, Daniel Rus Morales
-
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 import datetime
 import copy
-from mock import patch
+from unittest.mock import patch
 
 from django.core.urlresolvers import reverse
 from django.test import TestCase as DjangoTestCase
-from tagging.models import Tag
+from taggit.models import TaggedItem
 from blognajd.models import DRAFT, PUBLIC, Story
 
 
-STORY_URL_KWARGS = {'year':2013, 'month':'jul', 'day':16, 'slug':'first-story'}
+STORY_URL_KWARGS = {'year': 2013, 'month': 'jul', 'day': 16,
+                    'slug': 'first-story'}
+
 
 class StoryManagerTestCase(DjangoTestCase):
     fixtures = ['story_tests.json']
@@ -55,7 +39,7 @@ class StoryManagerTestCase(DjangoTestCase):
         self.assert_(len(published) == 1)
         self.assertEqual(published[0], self.story)
 
-    def test_storymanager_select(self): 
+    def test_storymanager_select(self):
         published = Story.objects.select()
         self.assert_(len(published) == 1)
         self.assertEqual(published[0], self.story)
@@ -64,7 +48,8 @@ class StoryManagerTestCase(DjangoTestCase):
         drafts = Story.objects.select(status=[DRAFT])
         self.assert_(len(drafts) == 1)
         self.assertEqual(drafts[0], self.story)
-       
+
+
 class StoryModelTestCase(DjangoTestCase):
     fixtures = ['story_tests.json']
 
@@ -110,13 +95,13 @@ class StoryModelTestCase(DjangoTestCase):
     def test_story_get_absolute_url(self, fake_ping):
         # published
         self.assertEqual(self.story.get_absolute_url(),
-                         reverse('blog-story-detail', 
+                         reverse('blog-story-detail',
                                  kwargs=STORY_URL_KWARGS))
         # draft
         self.story.status = DRAFT
         self.story.save()
         self.assertEqual(self.story.get_absolute_url(),
-                         reverse('blog-story-detail-draft', 
+                         reverse('blog-story-detail-draft',
                                  kwargs=STORY_URL_KWARGS))
         # upcoming
         tomorrow = datetime.date.today() + datetime.timedelta(days=1)
@@ -124,11 +109,11 @@ class StoryModelTestCase(DjangoTestCase):
         self.story.status = PUBLIC
         self.story.save()
         kwargs = copy.copy(STORY_URL_KWARGS)
-        kwargs.update({'year': tomorrow.year, 
-                       'month':tomorrow.strftime("%b").lower(),
+        kwargs.update({'year': tomorrow.year,
+                       'month': tomorrow.strftime("%b").lower(),
                        'day': tomorrow.day})
         self.assertEqual(self.story.get_absolute_url(),
-                         reverse('blog-story-detail-upcoming', 
+                         reverse('blog-story-detail-upcoming',
                                  kwargs=kwargs))
 
     def test_story_in_future(self):
@@ -138,17 +123,18 @@ class StoryModelTestCase(DjangoTestCase):
         self.story.save()
         self.assertTrue(self.story.in_the_future)
 
+
 class DeleteStoryTagsTestCase(DjangoTestCase):
     fixtures = ['story_tests.json']
-    
+
     def setUp(self):
         self.tagname = 'something'
         self.story = Story.objects.get(pk=1)
-        self.story.tags = self.tagname
-        self.story.save()
+        self.story.tags.add(self.tagname)
 
     def test_delete_story_tags(self):
-        self.assert_(Tag.objects.filter(name=self.tagname).count() == 1)
+        self.assert_(
+            TaggedItem.objects.filter(tag__name=self.tagname).count() == 1)
         self.story.delete()
-        self.assert_(Tag.objects.filter(name=self.tagname).count() == 0)
-
+        self.assert_(
+            TaggedItem.objects.filter(tag__name=self.tagname).count() == 0)

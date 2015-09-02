@@ -1,10 +1,33 @@
 language: python
+
 python:
-  - 3.2
-# command to install dependencies
-install: 
-  - sudo apt-get install libxml2-dev libxslt1-dev
-  - pip install lxml --use-mirrors
-  - pip install -r requirements_tests.pip
-# command to run tests
-script: python setup.py test
+  - "3.4"
+  
+cache:
+  pip:
+  apt:
+  directories:
+    - .tox
+
+end:
+  - TOX_ENV=py34-django17
+  - TOX_ENV=py34-django18
+  
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq $APT
+
+after_failure:
+  - cat /home/travis/.pip/pip.log
+
+after_success:
+  - coveralls
+
+install:
+  - pip install pip wheel
+  - pip install -q coveralls flake8 tox
+
+script:
+  - env | sort
+  - tox -e $TOX_ENV
+  - flake8 --show-source --max-line-length=80 --exclude=.tox,docs,blognajd/tests/settings.py,blognajd/__init__.py,blognajd/migrations blognajd

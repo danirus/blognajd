@@ -2,17 +2,19 @@
 
 {% get_comment_count for object as comment_count %}
 <article class="blog-index">
-  <div class="row-fluid">
-    <div class="date text-right span3">
-      {{ object.pub_date|date:"M d, Y" }}
-      {% if object.status == 1 %}
-      <br><span class="label label-important">draft</span>
-      {% endif %}
-      {% if comment_count %}
-      <p><a href="{{ object.get_absolute_url }}#comments">{{ comment_count }}&nbsp;comment{{ comment_count|pluralize }}</a></p>
-      {% endif %}
+  <div class="row">
+    <div class="col-lg-3 col-md-3">
+      <div class="date text-right">
+	{{ object.pub_date|date:"M d, Y" }}
+	{% if object.status == 1 %}
+	<br><span class="label label-important">draft</span>
+	{% endif %}
+	{% if comment_count %}
+	<p><a href="{{ object.get_absolute_url }}#comments">{{ comment_count }}&nbsp;comment{{ comment_count|pluralize }}</a></p>
+	{% endif %}
+      </div>
     </div>
-    <div class="span9">
+    <div class="col-lg-9 col-md-9">
       <div class="headline">
 	<a href="{{ object.get_absolute_url }}">{{ object.title }}</a>
       </div>
