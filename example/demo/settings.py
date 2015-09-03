@@ -95,7 +95,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'usersettings.middleware.CurrentUserSettingsMiddleware',
 )
 
 ROOT_URLCONF = "urls"
@@ -143,7 +142,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "django.core.context_processors.media",
     "django.core.context_processors.static",
-    "usersettings.context_processors.usersettings",
     "blognajd.context_processors.settings",
 )
 

@@ -1,11 +1,13 @@
 from datetime import date
 
 from django.db import models
-from django.db.models import permalink
+from django.db.models import fields, permalink
 from django.db.models.signals import post_delete
 from django.contrib.sitemaps import ping_google
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
+
+from usersettings.shortcuts import get_current_usersettings
 
 from taggit.managers import TaggableManager
 from django_markup.fields import MarkupField
@@ -19,15 +21,20 @@ from usersettings.models import UserSettings
 # Web Customizable Site Settings (based on django-usersettings2)
 class SiteSettings(UserSettings):
     site_short_name = models.CharField(_('Site short name'), max_length=48,
-                                       help_text='site_short_name')
+                                       default='sitename',
+                                       help_text='short_short_name')
     site_long_name = models.CharField(_('Site long name'), max_length=256,
-                                      blank=True, help_text='site_long_name')
+                                      default='longname', blank=True,
+                                      help_text='site_long_name')
     meta_author = models.CharField(_('Meta author'), max_length=48, blank=True,
+                                   default='meta author',
                                    help_text='meta_author')
     meta_keywords = models.CharField(_('Meta keywords'), max_length=256,
-                                     help_text='meta_keywords', blank=True)
+                                     default='meta keywords', blank=True,
+                                     help_text='meta_keywords')
     meta_description = models.TextField(_('Long description of the site'),
                                         help_text='meta_description',
+                                        default='meta description',
                                         blank=True)
     theme = models.CharField(_('Theme'), max_length=24, default='default',
                              help_text='theme')
@@ -48,6 +55,23 @@ class SiteSettings(UserSettings):
     class Meta:
         verbose_name = 'Site settings'
         verbose_name_plural = 'Site settings'
+
+
+def get_site_setting(param):
+    try:
+        sitesettings = get_current_usersettings()
+        return getattr(sitesettings, param)
+    except AttributeError:
+        field, _, _, _ = SiteSettings._meta.get_field_by_name(param)
+        if field.default == fields.NOT_PROVIDED:
+            return None
+        else:
+            return field.default
+
+
+class DefaultSiteSettings:
+    def __getattribute__(self, name):
+        return get_site_setting(name)
 
 # ----------------------------------------------------------------------
 

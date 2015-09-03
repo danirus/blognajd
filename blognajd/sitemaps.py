@@ -2,8 +2,7 @@ import copy
 from datetime import datetime
 from django.contrib.sitemaps import Sitemap
 
-from usersettings.shortcuts import get_current_usersettings as sitesettings
-from blognajd.models import PUBLIC, Story
+from blognajd.models import get_site_setting, PUBLIC, Story
 
 
 ditems = {
@@ -23,13 +22,13 @@ class StaticSitemap(Sitemap):
         self.ditems = copy.deepcopy(ditems)
 
     def items(self):
-        if not sitesettings().has_about_page and \
+        if not get_site_setting('has_about_page') and \
            self.ditems.get('about', False):
             self.ditems.pop('about')
-        if not sitesettings().has_projects_page and \
+        if not get_site_setting('has_projects_page') and \
            self.ditems.get('projects', False):
             self.ditems.pop('projects')
-        if not sitesettings().has_contact_page and \
+        if not get_site_setting('has_contact_page') and \
            self.ditems.get('contact', False):
             self.ditems.pop('contact')
         return list(self.ditems)

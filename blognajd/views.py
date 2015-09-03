@@ -9,10 +9,9 @@ from django.views.generic import ListView, DateDetailView, RedirectView
 from django.views.generic.dates import YearArchiveView
 from django.views.generic.list import MultipleObjectMixin
 
-from usersettings.shortcuts import get_current_usersettings as sitesettings
 from taggit.models import Tag
 
-from blognajd.models import DRAFT, PUBLIC, Story
+from blognajd.models import get_site_setting, DRAFT, PUBLIC, Story
 
 
 def http403_handler(request):
@@ -37,7 +36,7 @@ class HomepageView(ListView):
     template_name = "blognajd/index.html"
 
     def get_paginate_by(self, queryset):
-        return sitesettings().paginate_by
+        return get_site_setting('paginate_by')
 
     def get_queryset(self):
         if self.request.session.get("unpublished_on", False):
@@ -118,7 +117,7 @@ class TagDetailView(ListView):
     template_name = "blognajd/tag_detail.html"
 
     def get_paginate_by(self, queryset):
-        return sitesettings().paginate_by
+        return get_site_setting('paginate_by')
 
     def get_queryset(self):
         return Story.objects.filter(

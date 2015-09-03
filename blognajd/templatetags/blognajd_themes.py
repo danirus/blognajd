@@ -12,8 +12,8 @@ from django import template
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.templatetags.static import StaticNode
 
-from usersettings.shortcuts import get_current_usersettings
 from blognajd.conf import settings
+from blognajd.models import get_site_setting
 
 
 register = template.Library()
@@ -28,8 +28,8 @@ class StaticFilesNode(StaticNode):
 
     def url(self, context):
         path = self.path.resolve(context)
-        dynconf = get_current_usersettings()
-        return theme_static(os.path.join(themes_path, dynconf.theme, path))
+        theme_name = get_site_setting('theme')
+        return theme_static(os.path.join(themes_path, theme_name, path))
 
 
 @register.tag('theme_static')

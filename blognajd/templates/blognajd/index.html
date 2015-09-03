@@ -11,8 +11,8 @@
 {% endblock %}
 
 {% block body %}
-<div id="body-index" class="row-fluid">
-  <div id="story-list-index" class="span11">
+<div id="body-index" class="row">
+  <div id="story-list-index" class="col-lg-11 col-md-11">
     {% if object_list %}
     {% for object in object_list %}
     {% include "blognajd/includes/story_index.html" %}

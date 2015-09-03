@@ -7,9 +7,8 @@ from django.core.urlresolvers import reverse
 
 from inline_media.parser import inlines
 from taggit.models import Tag, TaggedItem
-from usersettings.shortcuts import get_current_usersettings as sitesettings
 
-from blognajd.models import Story
+from blognajd.models import get_site_setting, Story
 
 
 # ct_story = ContentType.objects.get(app_label="blognajd", model="story")
@@ -31,15 +30,15 @@ class LatestStoriesFeed(Feed):
         return inlines(item.body)
 
     def item_author_name(self, item):
-        return sitesettings().meta_author
+        return get_site_setting('meta_author')
 
     def title(self):
         return '{0} stories feed'.format(
-            sitesettings().site_short_name)
+            get_site_setting('site_short_name'))
 
     def description(self):
         return '{0} latest stories feed.'.format(
-            sitesettings().site_long_name)
+            get_site_setting('site_long_name'))
 
     def link(self):
         return reverse('blog')
@@ -56,7 +55,7 @@ class StoriesByTag(Feed):
 
     def title(self, obj):
         return r'''{0} posts tagged as '{1}' feed'''.format(
-            sitesettings().site_short_name, obj.name)
+            get_site_setting('site_short_name'), obj.name)
 
     def link(self, obj):
         if not obj:
@@ -92,4 +91,4 @@ class StoriesByTag(Feed):
         return inlines(item.content_object.body)
 
     def item_author_name(self, item):
-        return sitesettings().meta_author
+        return get_site_setting('meta_author')

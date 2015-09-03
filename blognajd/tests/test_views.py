@@ -2,9 +2,8 @@ from django.core.urlresolvers import reverse
 from django.test import TestCase as DjangoTestCase
 
 from taggit.models import Tag, TaggedItem
-from usersettings.shortcuts import get_current_usersettings as sitesettings
 
-from blognajd.models import DRAFT, PUBLIC, Story
+from blognajd.models import get_site_setting, DRAFT, PUBLIC, Story
 from blognajd.views import HomepageView, TagDetailView
 
 
@@ -110,7 +109,7 @@ class HomepageViewTestCase(DjangoTestCase):
 
     def test_homepageview_get_paginate_by(self):
         self.assertEqual(HomepageView().get_paginate_by(None),
-                         sitesettings().paginate_by)
+                         get_site_setting('paginate_by'))
 
 
 class TagDetailViewTestCase(DjangoTestCase):
@@ -131,4 +130,4 @@ class TagDetailViewTestCase(DjangoTestCase):
 
     def test_tagdetailview_get_paginate_by(self):
         self.assertEqual(TagDetailView().get_paginate_by(None),
-                         sitesettings().paginate_by)
+                         get_site_setting('paginate_by'))

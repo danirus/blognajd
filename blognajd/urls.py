@@ -3,9 +3,8 @@ from django.conf.urls import include, patterns, url
 from django.contrib.auth.decorators import login_required, permission_required
 from django.views.generic import TemplateView, DateDetailView
 
-from usersettings.shortcuts import get_current_usersettings as sitesettings
 from blognajd import views
-from blognajd.models import Story
+from blognajd.models import Story, get_site_setting
 from blognajd.feeds import LatestStoriesFeed, StoriesByTag
 from blognajd.sitemaps import StaticSitemap, StoriesSitemap
 
@@ -40,7 +39,7 @@ urlpatterns = patterns(
     url(r"^unpublished-off/$", views.hide_unpublished, name="unpublished-off"),
 
     url(r'^blog$', views.StoryListView.as_view(
-        model=Story, paginate_by=sitesettings().paginate_by,
+        model=Story, paginate_by=get_site_setting('paginate_by'),
         template_name="blognajd/blog.html"),
         name='blog'),
 
@@ -100,7 +99,7 @@ urlpatterns += patterns(
     url(r'^sitemap-(?P<section>.+)\.xml$', 'sitemap', {'sitemaps': sitemaps}),
 )
 
-if sitesettings().has_about_page:
+if get_site_setting('has_about_page'):
     urlpatterns += patterns(
         "",
         url(r'^about$',
@@ -108,7 +107,7 @@ if sitesettings().has_about_page:
             name='about'),
     )
 
-if sitesettings().has_projects_page:
+if get_site_setting('has_projects_page'):
     urlpatterns += patterns(
         "",
         url(r'^projects$',
@@ -116,7 +115,7 @@ if sitesettings().has_projects_page:
             name='projects'),
     )
 
-if sitesettings().has_contact_page:
+if get_site_setting('has_contact_page'):
     urlpatterns += patterns(
         "",
         url(r'^contact/', include('django_contactme.urls')),
