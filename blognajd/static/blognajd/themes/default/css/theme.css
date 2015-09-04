@@ -247,7 +247,7 @@ UL.errorlist LI { text-align: right }
     letter-spacing: -1px;
 }
 
-UL.tags {
+UL.tags, DIV.tags {
     display: flex;
     list-style: none;
     flex-wrap: wrap;
@@ -264,6 +264,11 @@ UL.tags LI A {
   font-family: monospace;
   font-weight: bold;
   font-size: 1.2em;
+}
+
+DIV.tags A {
+  margin: 3px;
+  padding: 5px 8px;
 }
 
 code {

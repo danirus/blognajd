@@ -1,7 +1,7 @@
 {% extends "blognajd/base.html" %}
 {% load staticfiles %}
 {% load comments %}
-{% load taggit_templatetags2_tags %}
+{% load blognajd_tags %}
 {% load inlines %}
 
 {% block meta-description %}{{ object.abstract_markup|render_inlines|striptags }}{% endblock %}
