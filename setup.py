@@ -22,7 +22,7 @@ def TestCommand(test):
 
 setup(
     name = "blognajd",
-    version = "1.1",
+    version = "1.1.1",
     packages = find_packages(),
     keywords = "django apps",
     license = "MIT",

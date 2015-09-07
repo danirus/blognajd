@@ -1,7 +1,7 @@
 """
 blognajd - A pluggable django blog application.
 """
-VERSION = (1, 1, 0, 'f', 0) # following PEP 386
+VERSION = (1, 1, 1, 'f', 0) # following PEP 386
 
 def get_version():
     version = '%s.%s' % (VERSION[0], VERSION[1])
