@@ -24,7 +24,6 @@
 
 {% block body %}
 <div id="body-projects">
-  {% flatblock_xtd 'projects-type-a' using 'flatblocks_xtd/projects.html' %}
-  {% flatblock_xtd 'projects-type-b' using 'flatblocks_xtd/projects.html' %}
+  {% include "blognajd/includes/projects.html" %}
 </div>
 {% endblock %}
