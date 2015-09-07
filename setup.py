@@ -45,11 +45,12 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content :: News/Diary',
         'Framework :: Django',
-        'Framework :: Django :: 1.5',
-        'Framework :: Django :: 1.6',
         'Framework :: Django :: 1.7',
         'Framework :: Django :: 1.8',
     ],
     include_package_data = True,
+    package_data = {
+        'blognajd': ['*.css', '*.js', '*.html']
+    },
     cmdclass={'test': TestCommand},
 )
