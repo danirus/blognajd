@@ -14,3 +14,5 @@ example/demo*/static/
 .emacs.desktop*
 .tox
 blognajd_tests
+blognajd/.coverage
+blognajd/media
