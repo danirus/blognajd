@@ -18,7 +18,7 @@
 <script src="{% static 'prettyphoto-3.1.3/js/jquery.prettyPhoto.js' %}" type="text/javascript" charset="utf-8"></script>
 {% endblock %}
 
-{% block nav-sitename %}<a href="{% url 'index' %}">{{ usersettings.site_short_name }}</a>{% endblock %}
+{% block nav-sitename %}<a href="{% url 'index' %}">{{ settings.BLOGNAJD.site_short_name }}</a>{% endblock %}
 
 {% block class-nav-blog %}active{% endblock %}
 

@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 # ----------------------------------------------------------------------
 # This file is basically a copy of
 # django/contrib/staticfiles/templatetags/staticfiles.py

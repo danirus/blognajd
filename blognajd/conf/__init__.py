@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import six
 
 from django.conf import settings as django_settings

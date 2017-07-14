@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 import copy
 from datetime import datetime
 from django.contrib.sitemaps import Sitemap

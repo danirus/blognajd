@@ -20,7 +20,7 @@
 	<a href="{{ object.get_absolute_url }}">{{ object.title }}</a>
       </span>
       <span class="abstract">
-	{{ object.abstract_markup|striptags|truncatewords:usersettings.truncate_to }}
+	{{ object.abstract_markup|striptags|truncatewords:settings.BLOGNAJD.truncate_to }}
       </span>
     </div>
   </div>

@@ -1,4 +1,7 @@
+from __future__ import unicode_literals
+
 from django.contrib.sites.models import Site
+
 from blognajd.conf import settings as _settings
 from blognajd.models import DefaultSiteSettings
 
@@ -18,7 +21,6 @@ def settings(request):
     """
     return {
         'settings': _settings,
-        'usersettings': DefaultSiteSettings(),
         'baseurl': '{0}://{1}'.format(
             request.META.get('wsgi.url_scheme', 'http'),
             Site.objects.get_current().domain)

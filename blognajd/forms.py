@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 try:
     import django_comments
 except ImportError:

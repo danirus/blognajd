@@ -5,12 +5,12 @@
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>{% block title %}{{ usersettings.site_short_name }}{% endblock %}</title>
+    <title>{% block title %}{{ settings.BLOGNAJD.site_short_name }}{% endblock %}</title>
     {% if settings.DEBUG %}<meta http-equiv="pragma" content="no-cache"/>{% endif %}
     <meta name="robots" content="index,follow">
-    <meta name="author" content="{{ usersettings.meta_author }}">
-    <meta name="keywords" content="{{ usersettings.meta_keywords }}">
-    <meta name="description" content="{% block meta-description %}{{ usersettings.meta_description }}{% endblock %}">
+    <meta name="author" content="{{ settings.BLOGNAJD.meta_author }}">
+    <meta name="keywords" content="{{ settings.BLOGNAJD.meta_keywords }}">
+    <meta name="description" content="{% block meta-description %}{{ settings.BLOGNAJD.meta_description }}{% endblock %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {% block extrahead %}{% endblock %}    
@@ -31,7 +31,7 @@
     <div class="container-narrow">
       <div id="header">
 	<ul class="nav nav-pills pull-right">
-	  {% if usersettings.has_about_page %}{% block nav-about %}<li><a href="{% url 'about' %}">about</a></li>{% endblock %}{% endif %}
+	  {% if settings.BLOGNAJD.has_about_page %}{% block nav-about %}<li><a href="{% url 'about' %}">about</a></li>{% endblock %}{% endif %}
 	  {% if user.is_authenticated %}
 	  <li class="dropdown">
 	    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -55,10 +55,10 @@
 	      <li><a href="{% url 'tags' %}">tags</a></li>
 	    </ul>
 	  </li>
-	  {% if usersettings.has_projects_page %}{% block nav-projects %}<li><a href="{% url 'projects' %}">projects</a></li>{% endblock %}{% endif %}
-	  {% if usersettings.has_contact_page %}{% block nav-contact %}<li><a href="{% url 'contactme-get-contact-form' %}">contact</a></li>{% endblock %}{% endif %}
+	  {% if settings.BLOGNAJD.has_projects_page %}{% block nav-projects %}<li><a href="{% url 'projects' %}">projects</a></li>{% endblock %}{% endif %}
+	  {% if settings.BLOGNAJD.has_contact_page %}{% block nav-contact %}<li><a href="{% url 'contactme-get-contact-form' %}">contact</a></li>{% endblock %}{% endif %}
 	</ul>
-	<h3 class="muted">{% block nav-sitename %}{{ usersettings.site_short_name }}{% endblock %}</h3>
+	<h3 class="muted">{% block nav-sitename %}{{ settings.BLOGNAJD.site_short_name }}{% endblock %}</h3>
       </div><!-- header -->
       <hr>
 
